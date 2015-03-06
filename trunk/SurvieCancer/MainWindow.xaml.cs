@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +25,13 @@ namespace SurvieCancer
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            StreamReader fileRead = new StreamReader(@"res_neuron_apprentissage.txt");
+            string[] strWords = fileRead.ReadToEnd().Split(new[] {'\n', ','}, StringSplitOptions.RemoveEmptyEntries);
+            
         }
     }
 }
