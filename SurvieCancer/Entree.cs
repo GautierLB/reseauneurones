@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SurvieCancer
 {
-    class entrée
+    class Entree
     {
         private int agePatient;
 
