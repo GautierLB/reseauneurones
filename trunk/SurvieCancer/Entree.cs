@@ -10,24 +10,31 @@ namespace SurvieCancer
     {
         private int agePatient;
 
-        public int AgePatient
+        public void SetAgePatient(int age)
         {
-            get { return agePatient; }
-            set { agePatient = value; }
+            this.agePatient = age;
         }
+
         private int anneeOperation;
 
-        public int AnneeOperation
+        public void SetAnneeOperation(int annee)
         {
-            get { return anneeOperation; }
-            set { anneeOperation = value; }
+            this.anneeOperation = annee;
         }
+        
         private int nbGanglions;
 
-        public int NbGanglions
+        public void SetNbGanglions(int nombre)
         {
-            get { return nbGanglions; }
-            set { nbGanglions = value; }
+            this.nbGanglions = nombre;
+        }
+
+        public Entree()
+        {
+            this.agePatient = 0;
+            this.anneeOperation = 0;
+            this.nbGanglions = 0;
         }
     }
+
 }

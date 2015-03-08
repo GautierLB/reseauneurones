@@ -29,9 +29,30 @@ namespace SurvieCancer
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            List<Entree> listEntree = new List<Entree>();
             StreamReader fileRead = new StreamReader(@"res_neuron_apprentissage.txt");
-            string[] strWords = fileRead.ReadToEnd().Split(new[] {'\n', ','}, StringSplitOptions.RemoveEmptyEntries);
-            
+            string[] lignes = fileRead.ReadToEnd().Split('\n');
+            foreach (string ligne in lignes)
+            {
+                string[] values = ligne.Split(',');
+                Entree newEntree = new Entree();
+                for (int i=0; i<3 ; i++){
+                    switch(i){
+                        case 0 :
+                            newEntree.SetAgePatient(Int32.Parse(values[i]));
+                            break;
+                        case 1 :
+                            newEntree.SetAnneeOperation(Int32.Parse(values[i]));
+                            break;
+                        case 3 :
+                            newEntree.SetNbGanglions(Int32.Parse(values[i]));
+                            break;
+                        default :
+                            break;
+                    }
+                }
+                listEntree.Add(newEntree);
+            }
         }
     }
 }
