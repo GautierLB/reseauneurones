@@ -9,13 +9,12 @@ namespace SurvieCancer
     class Neurone
     {
         private double[] poids;
-        private const int nbInputs = 4;
-        private double output;
+        private const int nbInputs = 3;
 
         public Neurone()
         {
             Random rand = new Random();
-            this.poids = new double[nbInputs];
+            this.poids = new double[nbInputs+1];
             for (int i = 0; i <= nbInputs; i++)
             {
                 poids[i] = rand.NextDouble();

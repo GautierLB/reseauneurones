@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace SurvieCancer
 {
     class ReseauNeurone
-    {
-        private Neurone[] neurones;
+    {    
         private Neurone sortie;
         private const int nbNeurones =3;
+        private Neurone[] neurones = new Neurone[nbNeurones];
 
         public ReseauNeurone()
         {
