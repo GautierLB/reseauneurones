@@ -33,19 +33,23 @@ namespace SurvieCancer
         }
         public void RecupFichier()
         {
-            List<Entree> listEntree = new List<Entree>();
+            Entree[] listEntree;
             StreamReader fileRead = new StreamReader(@"res_neuron_apprentissage.txt");
             string[] lignes = fileRead.ReadToEnd().Split('\n');
-            foreach (string ligne in lignes)
+            listEntree = new Entree[lignes.Length];
+            for (int i = 0; i < lignes.Length ; i++)
             {
-                string[] values = ligne.Split(',');
+                string[] values = lignes[i].Split(',');
                 Entree newEntree = new Entree();
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
                 {
-                    newEntree.AgeAnneeGanglions[i] = Int32.Parse(values[i]);
+                    newEntree.AgeAnneeGanglions[j] = Int32.Parse(values[j]);
                 }
-                listEntree.Add(newEntree);
+                listEntree[i] = newEntree;
             }
+            Systeme sys = new Systeme(listEntree);
+            sys.Run();
+
         }
     }
 }
