@@ -12,7 +12,7 @@ namespace SurvieCancer
         private Neurone sortie;
         private const int nbNeurones =3;
 
-        public ReseauNeurone(Entree[] entrees)
+        public ReseauNeurone()
         {
             for (int i = 0; i < nbNeurones; i++)
             {
