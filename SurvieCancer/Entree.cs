@@ -8,7 +8,7 @@ namespace SurvieCancer
 {
     class Entree
     {
-        public double[] AgeAnneeGanglions = new int[3];
+        public double[] AgeAnneeGanglions = new double[3];
 
         public Entree()
         {
