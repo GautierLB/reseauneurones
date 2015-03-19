@@ -10,6 +10,7 @@ namespace SurvieCancer
     {
         private double[] poids;
         private const int nbInputs = 3;
+        private double sortie;
 
         public Neurone()
         {
@@ -29,12 +30,22 @@ namespace SurvieCancer
                 x += entree[i] * poids[i];
             }
             x += poids[nbInputs];
-            return 1.0 / (1.0 + Math.Exp(-1.0 * x));
+            this.sortie = 1.0 / (1.0 + Math.Exp(-1.0 * x));
+            return (sortie);
         }
 
         public void setPoids(int pos, double value)
         {
             this.poids[pos] = value;
+        }
+        public double getPoids(int index)
+        {
+            return (this.poids[index]);
+        }
+
+        public double getOutput()
+        {
+            return (this.sortie);
         }
     }
 }
