@@ -27,10 +27,13 @@ namespace SurvieCancer
             InitializeComponent();
         }
 
+        ReseauNeurone reseauAppri;
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.RecupFichier();
         }
+
         public void RecupFichier()
         {
             Entree[] listEntree;
@@ -48,8 +51,30 @@ namespace SurvieCancer
                 listEntree[i] = newEntree;
             }
             Systeme sys = new Systeme(listEntree);
-            sys.Run();
+            reseauAppri = sys.Run();
+            StartButton.IsEnabled = true;
+        }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Entree patient = new Entree();
+            patient.AgeAnneeGanglions[0] = Int32.Parse(TB_Age.Text);
+            patient.AgeAnneeGanglions[1] = Int32.Parse(TB_Annee.Text);
+            patient.AgeAnneeGanglions[2] = Int32.Parse(TB_nbGangl.Text);
+
+            double result = reseauAppri.Evaluer(patient);
+            double survie = reseauAppri.getSortie().getOutput();
+            /*int survie = 3;
+            if (result < 0.5)
+            {
+                survie = 0;
+            }
+            else
+            {
+                survie = 1;
+            }*/
+            BlockSortie.Text = survie.ToString();
+            BlockSortie.Text = result.ToString();
         }
     }
 }

@@ -10,8 +10,13 @@ namespace SurvieCancer
     {    
         private Neurone sortie;
         private const int nbNeuronesCachés =3;
-        private Neurone[] neurones;
+        private Neurone[] neurones = new Neurone[nbNeuronesCachés];
         private const int nbEntree = 3;
+
+        public Neurone getSortie()
+        {
+            return sortie;
+        }
 
         public ReseauNeurone()
         {
