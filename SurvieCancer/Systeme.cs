@@ -12,8 +12,9 @@ namespace SurvieCancer
         Entree[] entreesVerif;
         ReseauNeurone reseau;
 
-
         double tauxApprentissage = 0.3;
+        double ErreurMax = 0.005;
+        double IterationMax = 100001;
 
         public Systeme(Entree[] _entrees)
         {
@@ -32,19 +33,58 @@ namespace SurvieCancer
             this.reseau = new ReseauNeurone();
         }
 
-        public void Run()
+        public ReseauNeurone Run()
         {
             int i = 0;
+            double ErreurTotal = Double.PositiveInfinity;
+            Boolean GenralisationEstMeilleur = true;
+            double ErreurPrev = Double.PositiveInfinity;
+            double ErreurGeneralisationTotal = Double.PositiveInfinity;
+            double ErreurGeneralisationPrev = Double.PositiveInfinity;
+            
 
-            while (i < 10000)
+            while (i < IterationMax && ErreurTotal > ErreurMax && GenralisationEstMeilleur)
             {
+                ErreurPrev = ErreurTotal;
+                ErreurTotal = 0;
+                ErreurGeneralisationPrev = ErreurGeneralisationTotal;
+                ErreurGeneralisationTotal = 0;
+
                 // Evaluate
                 foreach (Entree entree in entrees)
                 {
-                    double outputs = reseau.Evaluer(entree);
+                    double sorties = reseau.Evaluer(entree);
+                    double erreur = entree.getSortie() - sorties;
+                    ErreurTotal += (erreur * erreur);
+                    
+                    //retro-propagation
+                    reseau.AjusterPoids(entree, tauxApprentissage);
                 }
+
+                //Généralisation
+                foreach (Entree entree in entreesVerif)
+                {
+                    double sorties = reseau.Evaluer(entree);
+                    double erreur = entree.getSortie() - sorties;
+                    ErreurGeneralisationTotal += (erreur * erreur);
+                }
+
+                if(ErreurGeneralisationTotal > ErreurGeneralisationPrev)
+                {
+                    GenralisationEstMeilleur = false;
+                }
+
+                //Affinement du taux
+                if (ErreurTotal >= ErreurPrev)
+                {
+                    tauxApprentissage = tauxApprentissage / 2.0;    
+                };
+
+                Console.WriteLine("Iteration n°" + i + " - Erreur Total : " + ErreurTotal + " - Erreur de génération : " + ErreurGeneralisationTotal + " - Taux : " + tauxApprentissage);
+
                 i++;
             }
+            return reseau;
         }
     }
 }

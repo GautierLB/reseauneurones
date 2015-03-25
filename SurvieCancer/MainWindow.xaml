@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <TextBox x:Name="TextBox1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Age du patient" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TextBox2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="160,10,0,0" Text="Année de l'opération"/>
-        <Button x:Name="ButtonStart" Content="Start !" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="Button_Click_1" Margin="221,147,0,0"/>
-        <TextBox x:Name="TextBox3" HorizontalAlignment="Left" Height="23" Margin="308,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" Text="Nombre de ganglions axilliaires"/>
-        <TextBlock x:Name="Textblock1" HorizontalAlignment="Left" Margin="239,256,0,0" TextWrapping="Wrap" Text="Survie ?" VerticalAlignment="Top" RenderTransformOrigin="1.463,0"/>
+        <TextBox x:Name="TB_Age" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Age du patient" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TB_Annee" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="160,10,0,0" Text="Année de l'opération"/>
+        <Button x:Name="LearnButton" Content="Apprentissage" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Click="Button_Click_1" Margin="200,148,0,0"/>
+        <TextBox x:Name="TB_nbGangl" HorizontalAlignment="Left" Height="23" Margin="308,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" Text="Nombre de ganglions axilliaires"/>
+        <TextBlock x:Name="BlockSortie" HorizontalAlignment="Left" Margin="239,256,0,0" TextWrapping="Wrap" Text="Survie ?" VerticalAlignment="Top" RenderTransformOrigin="1.463,0"/>
+        <Button x:Name="StartButton" Content="Tester la survie" HorizontalAlignment="Left" Margin="200,207,0,0" VerticalAlignment="Top" Width="115" Click="Button_Click_2" IsEnabled="False"/>
 
     </Grid>
 </Window>
