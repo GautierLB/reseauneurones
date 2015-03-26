@@ -27,14 +27,22 @@ namespace SurvieCancer
             this.sortie = new Neurone();
         }
 
-        public double Evaluer(Entree entree)
+        public int Evaluer(Entree entree)
         {
+            int resultat = new Int16();
             double[] sortiesNeurones = new double[nbNeuronesCachés];
             for (int i = 0; i < nbNeuronesCachés; i++)
             {
                 sortiesNeurones[i] = neurones[i].Evaluer(entree.AgeAnneeGanglions);
             }
-            double resultat = this.sortie.Evaluer(sortiesNeurones);
+            if (this.sortie.Evaluer(sortiesNeurones) > 0.5)
+            {
+                resultat = 2;
+            }
+            else
+            {
+                resultat = 1;
+            }
             return resultat;
         }
 
@@ -47,10 +55,11 @@ namespace SurvieCancer
 
             //Calculer les deltas des neurones cachés
             double[] deltaNeuroneCaches = new double[nbNeuronesCachés];
+            double sortieDuNeuroneCache;
             for (int i = 0; i < nbNeuronesCachés; i++)
             {
-                double sortieDuNeuroneCache = neurones[i].getOutput();
                 double sum = 0.0;
+                sortieDuNeuroneCache = this.neurones[i].getOutput();
                 sum += deltaSortie * sortie.getPoids(i);
                 deltaNeuroneCaches[i] = sortieDuNeuroneCache * (1 - sortieDuNeuroneCache) * sum;
             }
