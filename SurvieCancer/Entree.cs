@@ -9,9 +9,9 @@ namespace SurvieCancer
     class Entree
     {
         public double[] AgeAnneeGanglions = new double[3];
-        private double sortie = new double();
+        private int sortie = new int();
 
-        public void setSortie(double sortieRecue)
+        public void setSortie(int sortieRecue)
         {
             this.sortie = sortieRecue;
         }
