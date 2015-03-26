@@ -43,7 +43,9 @@ namespace SurvieCancer
             {
                 resultat = 1;
             }
+            //Console.WriteLine(this.sortie.Evaluer(sortiesNeurones).ToString());
             return resultat;
+            
         }
 
         public void AjusterPoids(Entree _critere ,double _TauxAppentissage)
@@ -55,11 +57,10 @@ namespace SurvieCancer
 
             //Calculer les deltas des neurones cachés
             double[] deltaNeuroneCaches = new double[nbNeuronesCachés];
-            double sortieDuNeuroneCache;
             for (int i = 0; i < nbNeuronesCachés; i++)
             {
+                double sortieDuNeuroneCache = neurones[i].getOutput();
                 double sum = 0.0;
-                sortieDuNeuroneCache = this.neurones[i].getOutput();
                 sum += deltaSortie * sortie.getPoids(i);
                 deltaNeuroneCaches[i] = sortieDuNeuroneCache * (1 - sortieDuNeuroneCache) * sum;
             }
@@ -69,7 +70,7 @@ namespace SurvieCancer
             Neurone neuroneSortie = sortie;
             for (int i = 0; i < nbNeuronesCachés; i++)
             {
-                value = neuroneSortie.getPoids(i) + _TauxAppentissage * deltaSortie * deltaNeuroneCaches[i];
+                value = neuroneSortie.getPoids(i) + _TauxAppentissage * deltaSortie * neurones[i].getOutput();
                 neuroneSortie.setPoids(i,value);
             }
             //Gestion du Seuil

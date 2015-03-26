@@ -24,6 +24,9 @@ namespace SurvieCancer
             {
                 this.entrees[i] = _entrees[i];
             }
+            List<Entree> list = new List<Entree>(entrees);
+            this.Shuffle(list);
+            entrees = list.ToArray();
             int a =0;
             for (int j = (int)Math.Ceiling(_entrees.Length * 0.7); j < _entrees.Length ; j++)
             {
@@ -31,6 +34,20 @@ namespace SurvieCancer
                 a++;
             }
             this.reseau = new ReseauNeurone();
+        }
+
+        public void Shuffle<T>(IList<T> list)
+        {
+            System.Random rng = new System.Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
         }
 
         public ReseauNeurone Run()
@@ -78,7 +95,7 @@ namespace SurvieCancer
                 if (ErreurTotal >= ErreurPrev)
                 {
                     tauxApprentissage = tauxApprentissage / 2.0;    
-                };
+                }
 
                 Console.WriteLine("Iteration n°" + i + " - Erreur Total : " + ErreurTotal + " - Erreur de génération : " + ErreurGeneralisationTotal + " - Taux : " + tauxApprentissage);
 

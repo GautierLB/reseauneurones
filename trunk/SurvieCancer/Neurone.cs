@@ -11,14 +11,14 @@ namespace SurvieCancer
         private double[] poids;
         private const int nbInputs = 3;
         private double sortie;
-
+        private Random gene = new Random();
         public Neurone()
         {
-            Random rand = new Random();
+            
             this.poids = new double[nbInputs+1];
             for (int i = 0; i <= nbInputs; i++)
             {
-                poids[i] = rand.NextDouble();
+                poids[i] = gene.NextDouble()*2-1;
             }
         }
 
