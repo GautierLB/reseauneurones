@@ -27,7 +27,7 @@ namespace SurvieCancer
             this.sortie = new Neurone();
         }
 
-        internal double Evaluer(Entree entree)
+        public double Evaluer(Entree entree)
         {
             double[] sortiesNeurones = new double[nbNeuronesCachés];
             for (int i = 0; i < nbNeuronesCachés; i++)
@@ -35,11 +35,10 @@ namespace SurvieCancer
                 sortiesNeurones[i] = neurones[i].Evaluer(entree.AgeAnneeGanglions);
             }
             double resultat = this.sortie.Evaluer(sortiesNeurones);
-
             return resultat;
         }
 
-        internal void AjusterPoids(Entree _critere ,double _TauxAppentissage)
+        public void AjusterPoids(Entree _critere ,double _TauxAppentissage)
         {
             //Calculer le delta du neurone de sortie
             double sortieReelle = sortie.getOutput();

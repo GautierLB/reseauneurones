@@ -48,6 +48,7 @@ namespace SurvieCancer
                 {
                     newEntree.AgeAnneeGanglions[j] = Int32.Parse(values[j]);
                 }
+                newEntree.setSortie(Int32.Parse(values[3]));
                 listEntree[i] = newEntree;
             }
             Systeme sys = new Systeme(listEntree);
