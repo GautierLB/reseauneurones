@@ -1,0 +1,190 @@
+<Project>
+  <Name>Cancer</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>SurvieCancer.exe</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>ReseauNeurone</Name>
+        <Access>Internal</Access>
+        <Location left="268" top="394" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Neurone sortie</Member>
+        <Member type="Field">private Neurone[] neurones</Member>
+        <Member type="Field">private const Int32 nbNeuronesCachés = 3</Member>
+        <Member type="Field">private const Int32 nbEntree = 3</Member>
+        <Member type="Constructor">public ReseauNeurone()</Member>
+        <Member type="Method">public Neurone getSortie()</Member>
+        <Member type="Method">public Int32 Evaluer(Entree entree)</Member>
+        <Member type="Method">public Void AjusterPoids(Entree _critere, Double _TauxAppentissage)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Systeme</Name>
+        <Access>Internal</Access>
+        <Location left="573" top="422" />
+        <Size width="162" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Entree[] entrees</Member>
+        <Member type="Field">private Entree[] entreesVerif</Member>
+        <Member type="Field">private ReseauNeurone reseau</Member>
+        <Member type="Field">private Double tauxApprentissage</Member>
+        <Member type="Field">private Double ErreurMax</Member>
+        <Member type="Field">private Double IterationMax</Member>
+        <Member type="Constructor">public Systeme(Entree[] _entrees)</Member>
+        <Member type="Method">public Void Shuffle(IList&lt;T&gt; list)</Member>
+        <Member type="Method">public ReseauNeurone Run()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Entree</Name>
+        <Access>Internal</Access>
+        <Location left="584" top="83" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public Double[] AgeAnneeGanglions</Member>
+        <Member type="Field">private Int32 sortie</Member>
+        <Member type="Constructor">public Entree()</Member>
+        <Member type="Method">public Void setSortie(Int32 sortieRecue)</Member>
+        <Member type="Method">public Double getSortie()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MainWindow</Name>
+        <Access>Public</Access>
+        <Location left="812" top="83" />
+        <Size width="162" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private ReseauNeurone reseauAppri</Member>
+        <Member type="Field">private Systeme sys</Member>
+        <Member type="Field">internal TextBox TB_Age</Member>
+        <Member type="Field">internal TextBox TB_Annee</Member>
+        <Member type="Field">internal Button LearnButton</Member>
+        <Member type="Field">internal TextBox TB_nbGangl</Member>
+        <Member type="Field">internal TextBlock BlockSortie</Member>
+        <Member type="Field">internal Button StartButton</Member>
+        <Member type="Field">private Boolean _contentLoaded</Member>
+        <Member type="Constructor">public MainWindow()</Member>
+        <Member type="Method">private Void Button_Click_1(Object sender, RoutedEventArgs e)</Member>
+        <Member type="Method">public Void RecupFichier()</Member>
+        <Member type="Method">private Void Button_Click_2(Object sender, RoutedEventArgs e)</Member>
+        <Member type="Method">public Void InitializeComponent()</Member>
+        <Member type="Method">Void System.Windows.Markup.IComponentConnector.Connect(Int32 connectionId, Object target)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Neurone</Name>
+        <Access>Internal</Access>
+        <Location left="268" top="83" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Double[] poids</Member>
+        <Member type="Field">private Double sortie</Member>
+        <Member type="Field">private const Int32 nbInputs = 3</Member>
+        <Member type="Constructor">public Neurone()</Member>
+        <Member type="Method">public Double Evaluer(Double[] entree)</Member>
+        <Member type="Method">public Void setPoids(Int32 pos, Double value)</Member>
+        <Member type="Method">public Double getPoids(Int32 index)</Member>
+        <Member type="Method">public Double getOutput()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="0" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>sortie</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>414</X>
+          <Y>368</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>neurones</StartRole>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>629</X>
+          <Y>379</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>entrees</StartRole>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>733</X>
+          <Y>393</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>entreesVerif</StartRole>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>reseau</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="3" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>956</X>
+          <Y>677</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>reseauAppri</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="3" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>780</X>
+          <Y>381</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>644</X>
+          <Y>397</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>sys</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
