@@ -97,7 +97,7 @@ namespace SurvieCancer
                     tauxApprentissage = tauxApprentissage / 2.0;    
                 }
 
-                Console.WriteLine("Iteration n°" + i + " - Erreur Total : " + ErreurTotal + " - Erreur de génération : " + ErreurGeneralisationTotal + " - Taux : " + tauxApprentissage);
+                //Console.WriteLine("Iteration n°" + i + " - Erreur Total : " + ErreurTotal + " - Erreur de génération : " + ErreurGeneralisationTotal + " - Taux : " + tauxApprentissage);
 
                 i++;
             }
