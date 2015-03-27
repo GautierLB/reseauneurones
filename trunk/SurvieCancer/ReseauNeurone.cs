@@ -50,7 +50,7 @@ namespace SurvieCancer
 
         public void AjusterPoids(Entree _critere ,double _TauxAppentissage)
         {
-            Console.WriteLine("Adjusting weights");
+            //Console.WriteLine("Adjusting weights");
             //Calculer le delta du neurone de sortie
             double sortieReelle = sortie.getOutput();
             double sortieAttendue = _critere.getSortie();

@@ -31,7 +31,7 @@ namespace SurvieCancer
             }
             x += poids[nbInputs];
             this.sortie = 1.0 / (1.0 + Math.Exp(-(x - 0.5)));
-            Console.WriteLine(sortie.ToString());
+            //Console.WriteLine(sortie.ToString());
             return (sortie);
         }
 
