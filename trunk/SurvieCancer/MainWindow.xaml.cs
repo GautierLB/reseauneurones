@@ -28,6 +28,7 @@ namespace SurvieCancer
         }
 
         ReseauNeurone reseauAppri;
+        Systeme sys;
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -51,7 +52,7 @@ namespace SurvieCancer
                 newEntree.setSortie(Int32.Parse(values[3]));
                 listEntree[i] = newEntree;
             }
-            Systeme sys = new Systeme(listEntree);
+            sys = new Systeme(listEntree);
             reseauAppri = sys.Run();
             StartButton.IsEnabled = true;
         }
